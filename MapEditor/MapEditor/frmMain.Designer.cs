@@ -31,7 +31,6 @@
             this.pnlMap = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ispisiSadrzajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zid1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +49,16 @@
             this.modoviToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crtanjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oznacavanjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pogledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rezolucijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.x480ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.x600ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.x768ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iscrtajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblResolution = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.lblSelectionMode = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblDrawMode = new System.Windows.Forms.Label();
@@ -61,14 +69,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblX = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.pogledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rezolucijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.x600ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.x768ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.x480ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.iscrtajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,18 +101,9 @@
             // 
             // fileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ispisiSadrzajToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "Fajl";
-            // 
-            // ispisiSadrzajToolStripMenuItem
-            // 
-            this.ispisiSadrzajToolStripMenuItem.Name = "ispisiSadrzajToolStripMenuItem";
-            this.ispisiSadrzajToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.ispisiSadrzajToolStripMenuItem.Text = "Ispisi sadrzaj";
-            this.ispisiSadrzajToolStripMenuItem.Click += new System.EventHandler(this.ispisiSadrzajToolStripMenuItem_Click);
             // 
             // mapToolsToolStripMenuItem
             // 
@@ -120,7 +112,7 @@
             this.tenkoviToolStripMenuItem,
             this.modoviToolStripMenuItem});
             this.mapToolsToolStripMenuItem.Name = "mapToolsToolStripMenuItem";
-            this.mapToolsToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.mapToolsToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.mapToolsToolStripMenuItem.Text = "Alati mape";
             // 
             // zidToolStripMenuItem
@@ -129,20 +121,20 @@
             this.zid1ToolStripMenuItem,
             this.zid2ToolStripMenuItem});
             this.zidToolStripMenuItem.Name = "zidToolStripMenuItem";
-            this.zidToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.zidToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.zidToolStripMenuItem.Text = "Zid";
             // 
             // zid1ToolStripMenuItem
             // 
             this.zid1ToolStripMenuItem.Name = "zid1ToolStripMenuItem";
-            this.zid1ToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.zid1ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.zid1ToolStripMenuItem.Text = "Zid 1";
             this.zid1ToolStripMenuItem.Click += new System.EventHandler(this.zid1ToolStripMenuItem_Click);
             // 
             // zid2ToolStripMenuItem
             // 
             this.zid2ToolStripMenuItem.Name = "zid2ToolStripMenuItem";
-            this.zid2ToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.zid2ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.zid2ToolStripMenuItem.Text = "Zid 2";
             this.zid2ToolStripMenuItem.Click += new System.EventHandler(this.zid2ToolStripMenuItem_Click);
             // 
@@ -152,7 +144,7 @@
             this.igracToolStripMenuItem,
             this.neprijateljToolStripMenuItem});
             this.tenkoviToolStripMenuItem.Name = "tenkoviToolStripMenuItem";
-            this.tenkoviToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.tenkoviToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.tenkoviToolStripMenuItem.Text = "Tenkovi";
             // 
             // igracToolStripMenuItem
@@ -163,34 +155,34 @@
             this.igrac3ToolStripMenuItem,
             this.igrac4ToolStripMenuItem});
             this.igracToolStripMenuItem.Name = "igracToolStripMenuItem";
-            this.igracToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.igracToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.igracToolStripMenuItem.Text = "Igrac";
             // 
             // igrac1ToolStripMenuItem
             // 
             this.igrac1ToolStripMenuItem.Name = "igrac1ToolStripMenuItem";
-            this.igrac1ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.igrac1ToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.igrac1ToolStripMenuItem.Text = "Igrac 1";
             this.igrac1ToolStripMenuItem.Click += new System.EventHandler(this.igrac1ToolStripMenuItem_Click);
             // 
             // igrac2ToolStripMenuItem
             // 
             this.igrac2ToolStripMenuItem.Name = "igrac2ToolStripMenuItem";
-            this.igrac2ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.igrac2ToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.igrac2ToolStripMenuItem.Text = "Igrac 2";
             this.igrac2ToolStripMenuItem.Click += new System.EventHandler(this.igrac2ToolStripMenuItem_Click);
             // 
             // igrac3ToolStripMenuItem
             // 
             this.igrac3ToolStripMenuItem.Name = "igrac3ToolStripMenuItem";
-            this.igrac3ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.igrac3ToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.igrac3ToolStripMenuItem.Text = "Igrac 3";
             this.igrac3ToolStripMenuItem.Click += new System.EventHandler(this.igrac3ToolStripMenuItem_Click);
             // 
             // igrac4ToolStripMenuItem
             // 
             this.igrac4ToolStripMenuItem.Name = "igrac4ToolStripMenuItem";
-            this.igrac4ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.igrac4ToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.igrac4ToolStripMenuItem.Text = "Igrac 4";
             this.igrac4ToolStripMenuItem.Click += new System.EventHandler(this.igrac4ToolStripMenuItem_Click);
             // 
@@ -202,34 +194,34 @@
             this.neprijatelj3ToolStripMenuItem,
             this.neprijatelj4ToolStripMenuItem});
             this.neprijateljToolStripMenuItem.Name = "neprijateljToolStripMenuItem";
-            this.neprijateljToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.neprijateljToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.neprijateljToolStripMenuItem.Text = "Neprijatelj";
             // 
             // neprijatelj1ToolStripMenuItem
             // 
             this.neprijatelj1ToolStripMenuItem.Name = "neprijatelj1ToolStripMenuItem";
-            this.neprijatelj1ToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.neprijatelj1ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.neprijatelj1ToolStripMenuItem.Text = "Neprijatelj 1";
             this.neprijatelj1ToolStripMenuItem.Click += new System.EventHandler(this.neprijatelj1ToolStripMenuItem_Click);
             // 
             // neprijatelj2ToolStripMenuItem
             // 
             this.neprijatelj2ToolStripMenuItem.Name = "neprijatelj2ToolStripMenuItem";
-            this.neprijatelj2ToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.neprijatelj2ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.neprijatelj2ToolStripMenuItem.Text = "Neprijatelj 2";
             this.neprijatelj2ToolStripMenuItem.Click += new System.EventHandler(this.neprijatelj2ToolStripMenuItem_Click);
             // 
             // neprijatelj3ToolStripMenuItem
             // 
             this.neprijatelj3ToolStripMenuItem.Name = "neprijatelj3ToolStripMenuItem";
-            this.neprijatelj3ToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.neprijatelj3ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.neprijatelj3ToolStripMenuItem.Text = "Neprijatelj 3";
             this.neprijatelj3ToolStripMenuItem.Click += new System.EventHandler(this.neprijatelj3ToolStripMenuItem_Click);
             // 
             // neprijatelj4ToolStripMenuItem
             // 
             this.neprijatelj4ToolStripMenuItem.Name = "neprijatelj4ToolStripMenuItem";
-            this.neprijatelj4ToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.neprijatelj4ToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.neprijatelj4ToolStripMenuItem.Text = "Neprijatelj 4";
             this.neprijatelj4ToolStripMenuItem.Click += new System.EventHandler(this.neprijatelj4ToolStripMenuItem_Click);
             // 
@@ -239,14 +231,14 @@
             this.crtanjeToolStripMenuItem,
             this.oznacavanjeToolStripMenuItem});
             this.modoviToolStripMenuItem.Name = "modoviToolStripMenuItem";
-            this.modoviToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.modoviToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.modoviToolStripMenuItem.Text = "Modovi";
             // 
             // crtanjeToolStripMenuItem
             // 
             this.crtanjeToolStripMenuItem.Name = "crtanjeToolStripMenuItem";
             this.crtanjeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.crtanjeToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.crtanjeToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.crtanjeToolStripMenuItem.Text = "Crtanje";
             this.crtanjeToolStripMenuItem.Click += new System.EventHandler(this.crtanjeToolStripMenuItem_Click);
             // 
@@ -254,12 +246,70 @@
             // 
             this.oznacavanjeToolStripMenuItem.Name = "oznacavanjeToolStripMenuItem";
             this.oznacavanjeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.oznacavanjeToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.oznacavanjeToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.oznacavanjeToolStripMenuItem.Text = "Oznacavanje";
             this.oznacavanjeToolStripMenuItem.Click += new System.EventHandler(this.oznacavanjeToolStripMenuItem_Click);
             // 
+            // pogledToolStripMenuItem
+            // 
+            this.pogledToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rezolucijaToolStripMenuItem,
+            this.gridToolStripMenuItem});
+            this.pogledToolStripMenuItem.Name = "pogledToolStripMenuItem";
+            this.pogledToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.pogledToolStripMenuItem.Text = "Pogled";
+            // 
+            // rezolucijaToolStripMenuItem
+            // 
+            this.rezolucijaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.x480ToolStripMenuItem,
+            this.x600ToolStripMenuItem,
+            this.x768ToolStripMenuItem});
+            this.rezolucijaToolStripMenuItem.Name = "rezolucijaToolStripMenuItem";
+            this.rezolucijaToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.rezolucijaToolStripMenuItem.Text = "Rezolucija";
+            // 
+            // x480ToolStripMenuItem
+            // 
+            this.x480ToolStripMenuItem.Name = "x480ToolStripMenuItem";
+            this.x480ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.x480ToolStripMenuItem.Text = "600x480";
+            this.x480ToolStripMenuItem.Click += new System.EventHandler(this.x480ToolStripMenuItem_Click);
+            // 
+            // x600ToolStripMenuItem
+            // 
+            this.x600ToolStripMenuItem.Name = "x600ToolStripMenuItem";
+            this.x600ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.x600ToolStripMenuItem.Text = "800x600";
+            this.x600ToolStripMenuItem.Click += new System.EventHandler(this.x600ToolStripMenuItem_Click);
+            // 
+            // x768ToolStripMenuItem
+            // 
+            this.x768ToolStripMenuItem.Name = "x768ToolStripMenuItem";
+            this.x768ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.x768ToolStripMenuItem.Text = "1024x768";
+            this.x768ToolStripMenuItem.Click += new System.EventHandler(this.x768ToolStripMenuItem_Click);
+            // 
+            // gridToolStripMenuItem
+            // 
+            this.gridToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.iscrtajToolStripMenuItem});
+            this.gridToolStripMenuItem.Name = "gridToolStripMenuItem";
+            this.gridToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.gridToolStripMenuItem.Text = "Grid";
+            // 
+            // iscrtajToolStripMenuItem
+            // 
+            this.iscrtajToolStripMenuItem.Name = "iscrtajToolStripMenuItem";
+            this.iscrtajToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.iscrtajToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.iscrtajToolStripMenuItem.Text = "Iscrtaj";
+            this.iscrtajToolStripMenuItem.Click += new System.EventHandler(this.iscrtajToolStripMenuItem_Click);
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblResolution);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.lblSelectionMode);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.lblDrawMode);
@@ -272,10 +322,27 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(1042, 38);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(214, 268);
+            this.groupBox1.Size = new System.Drawing.Size(214, 288);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Info";
+            // 
+            // lblResolution
+            // 
+            this.lblResolution.AutoSize = true;
+            this.lblResolution.Location = new System.Drawing.Point(78, 268);
+            this.lblResolution.Name = "lblResolution";
+            this.lblResolution.Size = new System.Drawing.Size(0, 13);
+            this.lblResolution.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(19, 269);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Rezolucija:";
             // 
             // lblSelectionMode
             // 
@@ -362,75 +429,20 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "X:";
             // 
-            // listBox1
+            // statusStrip1
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(1042, 312);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(214, 420);
-            this.listBox1.TabIndex = 3;
-            // 
-            // pogledToolStripMenuItem
-            // 
-            this.pogledToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rezolucijaToolStripMenuItem,
-            this.gridToolStripMenuItem});
-            this.pogledToolStripMenuItem.Name = "pogledToolStripMenuItem";
-            this.pogledToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-            this.pogledToolStripMenuItem.Text = "Pogled";
-            // 
-            // rezolucijaToolStripMenuItem
-            // 
-            this.rezolucijaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.x480ToolStripMenuItem,
-            this.x600ToolStripMenuItem,
-            this.x768ToolStripMenuItem});
-            this.rezolucijaToolStripMenuItem.Name = "rezolucijaToolStripMenuItem";
-            this.rezolucijaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.rezolucijaToolStripMenuItem.Text = "Rezolucija";
-            // 
-            // x600ToolStripMenuItem
-            // 
-            this.x600ToolStripMenuItem.Name = "x600ToolStripMenuItem";
-            this.x600ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.x600ToolStripMenuItem.Text = "800x600";
-            this.x600ToolStripMenuItem.Click += new System.EventHandler(this.x600ToolStripMenuItem_Click);
-            // 
-            // x768ToolStripMenuItem
-            // 
-            this.x768ToolStripMenuItem.Name = "x768ToolStripMenuItem";
-            this.x768ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.x768ToolStripMenuItem.Text = "1024x768";
-            this.x768ToolStripMenuItem.Click += new System.EventHandler(this.x768ToolStripMenuItem_Click);
-            // 
-            // x480ToolStripMenuItem
-            // 
-            this.x480ToolStripMenuItem.Name = "x480ToolStripMenuItem";
-            this.x480ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.x480ToolStripMenuItem.Text = "600x480";
-            this.x480ToolStripMenuItem.Click += new System.EventHandler(this.x480ToolStripMenuItem_Click);
-            // 
-            // gridToolStripMenuItem
-            // 
-            this.gridToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.iscrtajToolStripMenuItem});
-            this.gridToolStripMenuItem.Name = "gridToolStripMenuItem";
-            this.gridToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.gridToolStripMenuItem.Text = "Grid";
-            // 
-            // iscrtajToolStripMenuItem
-            // 
-            this.iscrtajToolStripMenuItem.Name = "iscrtajToolStripMenuItem";
-            this.iscrtajToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.iscrtajToolStripMenuItem.Text = "Iscrtaj";
-            this.iscrtajToolStripMenuItem.Click += new System.EventHandler(this.iscrtajToolStripMenuItem_Click);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 819);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1268, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1268, 753);
-            this.Controls.Add(this.listBox1);
+            this.ClientSize = new System.Drawing.Size(1268, 841);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pnlMap);
             this.Controls.Add(this.menuStrip1);
@@ -438,7 +450,9 @@
             this.Name = "frmMain";
             this.Text = "Map Editor By Dino Causevic";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.SizeChanged += new System.EventHandler(this.frmMain_SizeChanged);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.Resize += new System.EventHandler(this.frmMain_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -483,8 +497,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblSelectionMode;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ToolStripMenuItem ispisiSadrzajToolStripMenuItem;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ToolStripMenuItem pogledToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rezolucijaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem x600ToolStripMenuItem;
@@ -492,6 +504,9 @@
         private System.Windows.Forms.ToolStripMenuItem x480ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gridToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iscrtajToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.Label lblResolution;
+        private System.Windows.Forms.Label label6;
     }
 }
 

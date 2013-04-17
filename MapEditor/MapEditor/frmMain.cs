@@ -79,6 +79,7 @@ namespace MapEditor
         private Map mapContainer = new Map();
 
         private ArrayList matrixTiles = new ArrayList();
+        private ArrayList selectRect = new ArrayList();
 
         private const int cellSize = 40;
 
@@ -115,6 +116,11 @@ namespace MapEditor
             InitializeComponent();
         }
 
+        public void resizeFormEvent(object sender, EventArgs evt)
+        {
+            lblResolution.Text = pnlMap.Size.Width + " x " + pnlMap.Size.Height;
+        }
+
         private bool isFreeSpot(int x, int y)
         {
             for (int i = 0; i < matrixTiles.Count; i++)
@@ -124,30 +130,78 @@ namespace MapEditor
 
                 if (matrixTiles[i] is Wall)
                 {
-                    tempX = ((Wall)matrixTiles[i]).getX;
-                    tempY = ((Wall)matrixTiles[i]).getY;
+                    tempX = ((Wall)matrixTiles[i]).CordXInMatrix;
+                    tempY = ((Wall)matrixTiles[i]).CordYInMatrix;
 
                     tempW = ((Wall)matrixTiles[i]).Img.Width;
                     tempH = ((Wall)matrixTiles[i]).Img.Height;
 
-                    if (x <= tempX + tempW && x >= tempX && y <= tempY + tempH && y >= tempY) return true;
+                    if (x <= tempX + tempW && x >= tempX && y <= tempY + tempH && y >= tempY) return false;
 
                 }
                 else if (matrixTiles[i] is Tank)
                 {
-                    tempX = ((Tank)matrixTiles[i]).getX;
-                    tempY = ((Tank)matrixTiles[i]).getY;
+                    tempX = ((Tank)matrixTiles[i]).CordXInMatrix;
+                    tempY = ((Tank)matrixTiles[i]).CordYInMatrix;
 
                     tempW = ((Tank)matrixTiles[i]).Img.Width;
                     tempH = ((Tank)matrixTiles[i]).Img.Height;
 
-                    if (x <= tempX + tempW && x >= tempX && y <= tempY + tempH && y >= tempY) return true;
+                    if (x <= tempX + tempW && x >= tempX && y <= tempY + tempH && y >= tempY) return false;
                 }
 
 
             }//end for i
 
-            return false;
+            return true;
+        }//end method
+
+        private bool isFreeSpot(int x, int y, out int indexObj)
+        {
+            indexObj = -1;
+            for (int i = 0; i < matrixTiles.Count; i++)
+            {
+                int tempX, tempY;
+                int tempW, tempH;
+
+                if (matrixTiles[i] is Wall)
+                {
+                    tempX = ((Wall)matrixTiles[i]).CordXInMatrix;
+                    tempY = ((Wall)matrixTiles[i]).CordYInMatrix;
+
+                    tempW = ((Wall)matrixTiles[i]).Img.Width;
+                    tempH = ((Wall)matrixTiles[i]).Img.Height;
+
+                    if (x <= tempX + tempW && x >= tempX && y <= tempY + tempH && y >= tempY)
+                    {
+                        indexObj = i;
+                        return false;
+                    }
+
+                }
+                else if (matrixTiles[i] is Tank)
+                {
+                    tempX = ((Tank)matrixTiles[i]).CordXInMatrix;
+                    tempY = ((Tank)matrixTiles[i]).CordYInMatrix;
+
+                    tempW = ((Tank)matrixTiles[i]).Img.Width;
+                    tempH = ((Tank)matrixTiles[i]).Img.Height;
+
+                    if (x <= tempX + tempW && x >= tempX && y <= tempY + tempH && y >= tempY)
+                    {
+                        indexObj = i;
+                        return false;
+                    }
+                }//end else if
+            }//end for i
+
+            return true;
+        }//end method
+
+        private void drawRectangle(Rectangle bound, Graphics gDraw, Color color)
+        {
+            Pen p = new Pen(color);
+            gDraw.DrawRectangle(p, bound);
         }//end method
 
         private void drawGrid()
@@ -197,6 +251,9 @@ namespace MapEditor
             {
                 lblSelectionMode.Text = "Iskljuceno";
             }
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            lblResolution.Text = pnlMap.Size.Width + " x " + pnlMap.Size.Height;
+            
         }
 
         protected void renderObject(Graphics g)
@@ -212,6 +269,14 @@ namespace MapEditor
                     g.DrawImage((Image)((Tank)matrixTiles[i]).Img, ((Tank)matrixTiles[i]).CordXInMatrix, ((Tank)matrixTiles[i]).CordYInMatrix);
                 }
             }//end for i
+
+            if (selectMode)
+            {
+                for (int i = 0; i < selectRect.Count; i++)
+                {
+                    g.DrawRectangle(new Pen(Color.Red), (Rectangle)selectRect[i]);
+                }//end for i
+            }//end if selectMode
 
         }//end method
 
@@ -346,8 +411,26 @@ namespace MapEditor
             }//end if
             else if (e.Button == System.Windows.Forms.MouseButtons.Left && selectMode)
             {
-                MessageBox.Show(isFreeSpot(e.X, e.Y).ToString());
-            }
+                int indexObj = -1;
+                Graphics gDraw = pnlMap.CreateGraphics();
+
+                if (!isFreeSpot(e.X, e.Y, out indexObj))
+                {
+                    Rectangle r = new Rectangle();
+                    if (matrixTiles[indexObj] is Wall)
+                    {
+                        r = new Rectangle( (matrixTiles[indexObj] as Wall).CordXInMatrix,(matrixTiles[indexObj] as Wall).CordYInMatrix,(matrixTiles[indexObj] as Wall).Img.Width,(matrixTiles[indexObj] as Wall).Img.Height);                        
+                        
+                    }//end if
+                    else if (matrixTiles[indexObj] is Tank)
+                    {
+                        r = new Rectangle((matrixTiles[indexObj] as Tank).CordXInMatrix, (matrixTiles[indexObj] as Tank).CordYInMatrix, (matrixTiles[indexObj] as Tank).Img.Width, (matrixTiles[indexObj] as Tank).Img.Height);                        
+                    }//end else if
+                    drawRectangle(r, gDraw, Color.Red);
+                    
+                    selectRect.Add(r);
+                }//end if, ako je nasao objekat markiraj ga
+            }//end else if
 
         }//end method
 
@@ -449,53 +532,44 @@ namespace MapEditor
         {
             if (selectMode)
             {
-                selectMode = false;
+                oznacavanjeToolStripMenuItem.Checked = selectMode = false;
                 lblSelectionMode.Text = "Iskljuceno";
+                pnlMap.Invalidate();
             }
             else
             {
-                selectMode = true;
+                oznacavanjeToolStripMenuItem.Checked = selectMode = true;
                 lblSelectionMode.Text = "Ukljuceno";
-            }
-        }
+            }//end else
+        }//end method
 
         private void ispisiSadrzajToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < matrixTiles.Count; i++)
-            {
-                if (matrixTiles[i] is Tank)
-                {
-                    listBox1.Items.Add(((Tank)matrixTiles[i]).getName);
-                }
-                else if (matrixTiles[i] is Wall)
-                {
-                    listBox1.Items.Add(((Wall)matrixTiles[i]).getName);
-                }
-            }
+            
         }
 
         private void x600ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Size = new Size(1052, 612);
+            this.Size = new Size(1052, 700);
             pnlMap.Size = new Size(800, 600);
             groupBox1.Location = new Point(pnlMap.Location.X + pnlMap.Width + 5, pnlMap.Location.Y);
-            listBox1.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y + groupBox1.Height);
+            lblResolution.Text = pnlMap.Size.Width + " x " + pnlMap.Size.Height;
         }
 
         private void x768ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Size = new Size(1276, 780);
+            this.Size = new Size(1276, 860);
             pnlMap.Size = new Size(1024, 768);
             groupBox1.Location = new Point(pnlMap.Location.X + pnlMap.Width + 5, pnlMap.Location.Y);
-            listBox1.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y + groupBox1.Height);
+            lblResolution.Text = pnlMap.Size.Width + " x " + pnlMap.Size.Height;
         }
 
         private void x480ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Size = new Size(852, 732);
+            this.Size = new Size(852, 625);
             pnlMap.Size = new Size(600, 480);
             groupBox1.Location = new Point(pnlMap.Location.X + pnlMap.Width + 5, pnlMap.Location.Y);
-            listBox1.Location = new Point(groupBox1.Location.X, groupBox1.Location.Y + groupBox1.Height);
+            lblResolution.Text = pnlMap.Size.Width + " x " + pnlMap.Size.Height;
         }
 
         private void iscrtajToolStripMenuItem_Click(object sender, EventArgs e)
@@ -513,6 +587,16 @@ namespace MapEditor
 
             }
             pnlMap.Invalidate();
+        }
+
+        private void frmMain_Resize(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void frmMain_SizeChanged(object sender, EventArgs e)
+        {
+            
         }//end method
 
     }//end class
