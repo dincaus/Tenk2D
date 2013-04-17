@@ -89,6 +89,35 @@ namespace MapEditor
         //GUI
         private bool drawGridMode = false;
 
+        protected void changeSelectionMode(bool sMode)
+        {
+            if (sMode)
+            {
+                drawMode = false;
+                lblDrawMode.Text = "Iskljuceno";
+                lblSelectionMode.Text = "Ukljuceno";                
+            }//end if            
+            else
+            {
+                lblSelectionMode.Text = "Iskljuceno";
+            }//end else
+        }//end method
+
+        protected void changeDrawMode(bool dMode)
+        {
+            if (dMode)
+            {
+                selectMode = false;
+                lblSelectionMode.Text = "Iskljuceno";
+                lblDrawMode.Text = "Ukljuceno";
+            }//end if
+            else
+            {
+                lblDrawMode.Text = "Iskljuceno";
+            }//end else
+        }//end method
+            
+    
         private void changeImageInPicBox(string imgFile)
         {
             if (imgFile == null)
@@ -526,6 +555,7 @@ namespace MapEditor
                 crtanjeToolStripMenuItem.Checked = true;
                 lblDrawMode.Text = "Ukljuceno";
             }
+            changeDrawMode(drawMode);
         }
 
         private void oznacavanjeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -541,6 +571,7 @@ namespace MapEditor
                 oznacavanjeToolStripMenuItem.Checked = selectMode = true;
                 lblSelectionMode.Text = "Ukljuceno";
             }//end else
+            changeSelectionMode(selectMode);
         }//end method
 
         private void ispisiSadrzajToolStripMenuItem_Click(object sender, EventArgs e)
