@@ -41,3 +41,5 @@ D:\DinoCausevic\C#\Tenk2DRepo\novikod4.19\MapEditor\MapEditor\obj\x86\Debug\MapE
 D:\DinoCausevic\C#\Tenk2DRepo\novikod4.19\MapEditor\MapEditor\obj\x86\Debug\MapEditor.Properties.Resources.resources
 D:\DinoCausevic\C#\Tenk2DRepo\novikod4.19\MapEditor\MapEditor\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\DinoCausevic\C#\Tenk2DRepo\novikod4.19\MapEditor\MapEditor\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\DinoCausevic\C#\Tenk2DRepo\novikod4.19\Tenk2D\MapEditor\MapEditor\obj\x86\Debug\MapEditor.exe
+D:\DinoCausevic\C#\Tenk2DRepo\novikod4.19\Tenk2D\MapEditor\MapEditor\obj\x86\Debug\MapEditor.pdb
