@@ -85,6 +85,7 @@ namespace MapEditor
 
         private bool drawMode = false;
         private bool selectMode = false;
+        private bool multiSelecMode = false;
 
         //GUI
         private bool drawGridMode = false;
@@ -95,13 +96,25 @@ namespace MapEditor
             {
                 drawMode = false;
                 lblDrawMode.Text = "Iskljuceno";
-                lblSelectionMode.Text = "Ukljuceno";                
+                lblSelectionMode.Text = "Ukljuceno";
             }//end if            
             else
             {
                 lblSelectionMode.Text = "Iskljuceno";
             }//end else
         }//end method
+
+        protected int getIndexOfGameObjAt(int x, int y)
+        {
+            int indexOfGameObj = -1;
+
+            if (!isFreeSpot(x, y, out indexOfGameObj))
+            {
+                return indexOfGameObj;
+            }
+
+            return -1;
+        }//end get
 
         protected void changeDrawMode(bool dMode)
         {
@@ -116,8 +129,8 @@ namespace MapEditor
                 lblDrawMode.Text = "Iskljuceno";
             }//end else
         }//end method
-            
-    
+
+
         private void changeImageInPicBox(string imgFile)
         {
             if (imgFile == null)
@@ -282,7 +295,6 @@ namespace MapEditor
             }
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             lblResolution.Text = pnlMap.Size.Width + " x " + pnlMap.Size.Height;
-            
         }
 
         protected void renderObject(Graphics g)
@@ -338,7 +350,6 @@ namespace MapEditor
 
             if (e.Button == System.Windows.Forms.MouseButtons.Left && drawMode && currentGameObj != -1)
             {
-
                 Graphics gDraw = pnlMap.CreateGraphics();
                 MatrixPos matPos = new MatrixPos(e.X, e.Y, cellSize);
 
@@ -438,7 +449,7 @@ namespace MapEditor
                     matrixTiles.Add((Tank)objTank);
                 }//end else if                
             }//end if
-            else if (e.Button == System.Windows.Forms.MouseButtons.Left && selectMode)
+            else if (e.Button == System.Windows.Forms.MouseButtons.Left && selectMode && multiSelecMode)
             {
                 int indexObj = -1;
                 Graphics gDraw = pnlMap.CreateGraphics();
@@ -448,17 +459,65 @@ namespace MapEditor
                     Rectangle r = new Rectangle();
                     if (matrixTiles[indexObj] is Wall)
                     {
-                        r = new Rectangle( (matrixTiles[indexObj] as Wall).CordXInMatrix,(matrixTiles[indexObj] as Wall).CordYInMatrix,(matrixTiles[indexObj] as Wall).Img.Width,(matrixTiles[indexObj] as Wall).Img.Height);                        
-                        
+                        r = new Rectangle((matrixTiles[indexObj] as Wall).CordXInMatrix, (matrixTiles[indexObj] as Wall).CordYInMatrix, (matrixTiles[indexObj] as Wall).Img.Width, (matrixTiles[indexObj] as Wall).Img.Height);
+
                     }//end if
                     else if (matrixTiles[indexObj] is Tank)
                     {
-                        r = new Rectangle((matrixTiles[indexObj] as Tank).CordXInMatrix, (matrixTiles[indexObj] as Tank).CordYInMatrix, (matrixTiles[indexObj] as Tank).Img.Width, (matrixTiles[indexObj] as Tank).Img.Height);                        
+                        r = new Rectangle((matrixTiles[indexObj] as Tank).CordXInMatrix, (matrixTiles[indexObj] as Tank).CordYInMatrix, (matrixTiles[indexObj] as Tank).Img.Width, (matrixTiles[indexObj] as Tank).Img.Height);
                     }//end else if
                     drawRectangle(r, gDraw, Color.Red);
-                    
+
                     selectRect.Add(r);
                 }//end if, ako je nasao objekat markiraj ga
+            }//end else if
+            else if (e.Button == System.Windows.Forms.MouseButtons.Left && selectMode && !multiSelecMode)
+            {
+                int indexObj = -1;
+                if (selectRect.Count >= 1)
+                {
+                    if (!isFreeSpot(e.X, e.Y, out indexObj))
+                    {
+                        Graphics gDraw = pnlMap.CreateGraphics();
+                        selectRect.RemoveAt(selectRect.Count - 1);
+
+                        Rectangle r = new Rectangle();
+                        if (matrixTiles[indexObj] is Wall)
+                        {
+                            r = new Rectangle((matrixTiles[indexObj] as Wall).CordXInMatrix, (matrixTiles[indexObj] as Wall).CordYInMatrix, (matrixTiles[indexObj] as Wall).Img.Width, (matrixTiles[indexObj] as Wall).Img.Height);
+
+                        }//end if
+                        else if (matrixTiles[indexObj] is Tank)
+                        {
+                            r = new Rectangle((matrixTiles[indexObj] as Tank).CordXInMatrix, (matrixTiles[indexObj] as Tank).CordYInMatrix, (matrixTiles[indexObj] as Tank).Img.Width, (matrixTiles[indexObj] as Tank).Img.Height);
+                        }//end else if
+                        drawRectangle(r, gDraw, Color.Red);
+
+                        pnlMap.Invalidate();
+                        selectRect.Add(r);
+                    }//end if
+                }//end if
+                else if (selectRect.Count == 0)
+                {
+                    Graphics gDraw = pnlMap.CreateGraphics();
+
+                    if (!isFreeSpot(e.X, e.Y, out indexObj))
+                    {
+                        Rectangle r = new Rectangle();
+                        if (matrixTiles[indexObj] is Wall)
+                        {
+                            r = new Rectangle((matrixTiles[indexObj] as Wall).CordXInMatrix, (matrixTiles[indexObj] as Wall).CordYInMatrix, (matrixTiles[indexObj] as Wall).Img.Width, (matrixTiles[indexObj] as Wall).Img.Height);
+
+                        }//end if
+                        else if (matrixTiles[indexObj] is Tank)
+                        {
+                            r = new Rectangle((matrixTiles[indexObj] as Tank).CordXInMatrix, (matrixTiles[indexObj] as Tank).CordYInMatrix, (matrixTiles[indexObj] as Tank).Img.Width, (matrixTiles[indexObj] as Tank).Img.Height);
+                        }//end else if
+                        drawRectangle(r, gDraw, Color.Red);
+
+                        selectRect.Add(r);
+                    }//end if, ako je nasao objekat markiraj ga
+                }//end else if
             }//end else if
 
         }//end method
@@ -576,7 +635,7 @@ namespace MapEditor
 
         private void ispisiSadrzajToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void x600ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -622,12 +681,50 @@ namespace MapEditor
 
         private void frmMain_Resize(object sender, EventArgs e)
         {
-            
+
         }
 
         private void frmMain_SizeChanged(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void frmMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control && selectMode && !multiSelecMode)
+            {
+                multiSelecMode = true;
+                toolStripStatusLabel1.Text = "Visestruki odabir";
+            }//end if
+            else if (e.Modifiers == Keys.Control && selectMode && multiSelecMode)
+            {
+                multiSelecMode = false;
+                toolStripStatusLabel1.Text = "";
+            }
+
+            if (e.KeyCode == Keys.Delete && selectMode && !multiSelecMode)
+            {
+                if (selectRect.Count > 0)
+                {
+                    Rectangle r = (Rectangle)selectRect[0];
+                    int indexOfObj = getIndexOfGameObjAt(r.X, r.Y);
+
+                    matrixTiles.RemoveAt(indexOfObj);
+                    pnlMap.Invalidate();
+                }//end if
+            }//end if
+            else if (e.KeyCode == Keys.Delete && selectMode && multiSelecMode)
+            {
+                // ako zelimo da brisemo vise elemenata odjednom 
+            }
+
+
+            //obrisi oznaceni objekat, ako je mod za odabir i nije visestruki odabir 
+        }//end method
+
+        private void frmMain_KeyUp(object sender, KeyEventArgs e)
+        {
+
         }//end method
 
     }//end class
