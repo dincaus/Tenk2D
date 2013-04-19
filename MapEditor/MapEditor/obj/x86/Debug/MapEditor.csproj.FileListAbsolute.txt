@@ -52,3 +52,12 @@ D:\DinoCausevic\C#\Tenk2DRepo\novikod4.19_1\Tenk2D\MapEditor\MapEditor\obj\x86\D
 D:\DinoCausevic\C#\Tenk2DRepo\novikod4.19_1\Tenk2D\MapEditor\MapEditor\obj\x86\Debug\MapEditor.Properties.Resources.resources
 D:\DinoCausevic\C#\Tenk2DRepo\novikod4.19_1\Tenk2D\MapEditor\MapEditor\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\DinoCausevic\C#\Tenk2DRepo\novikod4.19_1\Tenk2D\MapEditor\MapEditor\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\MapEditor\MapEditor\obj\x86\Debug\MapEditor.exe
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\MapEditor\MapEditor\obj\x86\Debug\MapEditor.pdb
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\MapEditor\MapEditor\bin\Debug\MapEditor.exe
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\MapEditor\MapEditor\bin\Debug\MapEditor.pdb
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\MapEditor\MapEditor\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\MapEditor\MapEditor\obj\x86\Debug\MapEditor.frmMain.resources
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\MapEditor\MapEditor\obj\x86\Debug\MapEditor.Properties.Resources.resources
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\MapEditor\MapEditor\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\MapEditor\MapEditor\obj\x86\Debug\GenerateResource.write.1.tlog

@@ -106,12 +106,35 @@ namespace MapEditor
 
         protected int getIndexOfGameObjAt(int x, int y)
         {
-            int indexOfGameObj = -1;
-
-            if (!isFreeSpot(x, y, out indexOfGameObj))
+            for (int i = 0; i < matrixTiles.Count; i++)
             {
-                return indexOfGameObj;
-            }
+                int tempX, tempY;
+                int tempW, tempH;
+
+                if (matrixTiles[i] is Wall)
+                {
+                    tempX = ((Wall)matrixTiles[i]).CordXInMatrix;
+                    tempY = ((Wall)matrixTiles[i]).CordYInMatrix;
+
+                    tempW = ((Wall)matrixTiles[i]).Img.Width;
+                    tempH = ((Wall)matrixTiles[i]).Img.Height;
+
+                    if (x <= tempX + tempW && x >= tempX && y <= tempY + tempH && y >= tempY) return i;
+
+                }
+                else if (matrixTiles[i] is Tank)
+                {
+                    tempX = ((Tank)matrixTiles[i]).CordXInMatrix;
+                    tempY = ((Tank)matrixTiles[i]).CordYInMatrix;
+
+                    tempW = ((Tank)matrixTiles[i]).Img.Width;
+                    tempH = ((Tank)matrixTiles[i]).Img.Height;
+
+                    if (x <= tempX + tempW && x >= tempX && y <= tempY + tempH && y >= tempY) return i;
+                }
+
+
+            }//end for i
 
             return -1;
         }//end get
@@ -707,9 +730,10 @@ namespace MapEditor
                 if (selectRect.Count > 0)
                 {
                     Rectangle r = (Rectangle)selectRect[0];
-                    int indexOfObj = getIndexOfGameObjAt(r.X, r.Y);
-
+                    int indexOfObj = getIndexOfGameObjAt(r.X+5, r.Y+5);
+                    
                     matrixTiles.RemoveAt(indexOfObj);
+                    selectRect.RemoveAt(0);
                     pnlMap.Invalidate();
                 }//end if
             }//end if

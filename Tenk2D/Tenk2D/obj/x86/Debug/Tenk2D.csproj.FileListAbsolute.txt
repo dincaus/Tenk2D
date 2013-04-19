@@ -43,3 +43,12 @@ D:\DinoCausevic\C#\Tenk2DRepo\novikod4.19_1\Tenk2D\Tenk2D\Tenk2D\obj\x86\Debug\G
 D:\DinoCausevic\C#\Tenk2DRepo\novikod4.19_1\Tenk2D\Tenk2D\Tenk2D\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\DinoCausevic\C#\Tenk2DRepo\novikod4.19_1\Tenk2D\Tenk2D\Tenk2D\obj\x86\Debug\Tenk2D.exe
 D:\DinoCausevic\C#\Tenk2DRepo\novikod4.19_1\Tenk2D\Tenk2D\Tenk2D\obj\x86\Debug\Tenk2D.pdb
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\Tenk2D\Tenk2D\bin\Debug\Tenk2D.exe
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\Tenk2D\Tenk2D\bin\Debug\Tenk2D.pdb
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\Tenk2D\Tenk2D\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\Tenk2D\Tenk2D\obj\x86\Debug\Tenk2D.frmMain.resources
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\Tenk2D\Tenk2D\obj\x86\Debug\Tenk2D.Properties.Resources.resources
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\Tenk2D\Tenk2D\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\Tenk2D\Tenk2D\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\Tenk2D\Tenk2D\obj\x86\Debug\Tenk2D.exe
+E:\Developing\C#Projects\Tenk2DRepository_Help\Tenk2D_4.19\Tenk2D\Tenk2D\Tenk2D\obj\x86\Debug\Tenk2D.pdb
